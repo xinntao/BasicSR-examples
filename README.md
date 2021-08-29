@@ -275,13 +275,13 @@ As GitHub does not support a specific branch as template, we need extra steps to
 
 1. Click `Use this template` and remember to check the `[ ] Include all branches` checkbox
 2. Change the installation branch to the master branch
-  ```bash
-  git clone -b installation YOUR_REPO  # clone the installation branch
-  cd REPO_NAME
-  git branch -m installation master  # rename the installation branch to master
-  git push -f origin master  # force push the local master branch to remote
-  git push origin --delete installation  # delete the remote installation branch
-  ```
+    ```bash
+    git clone -b installation YOUR_REPO  # clone the installation branch
+    cd REPO_NAME
+    git branch -m installation master  # rename the installation branch to master
+    git push -f origin master  # force push the local master branch to remote
+    git push origin --delete installation  # delete the remote installation branch
+    ```
 
 You may need to modify the following files:
 
@@ -291,14 +291,14 @@ You may need to modify the following files:
 1. Modify the `LICENSE`<br>
     This repository uses the *MIT* license, you may change it to other licenses
 
-As the installation mode require the package name, you also need to modify all the `basicsrexamples` name to YOUR_PACKAGE_NAME.
-Here are the detailed locations that contains the `basicsrexamples` name
+As the installation mode requires the package name, you also need to modify all the `basicsrexamples` name to YOUR_PACKAGE_NAME.
+Here are the detailed locations that contains the `basicsrexamples` name:
 1. The `basicsrexamples` folder
-1. [setup.py](setup.py#9); [setup.py](setup.py#48); [setup.py](setup.py#91)
-1. [basicsrexamples/train.py](basicsrexamples/train.py#4-6)
-1. [basicsrexamples/archs/__init__.py](basicsrexamples/archs/__init__.py#11)
-1. [basicsrexamples/data/__init__.py](basicsrexamples/data/__init__.py#11)
-1. [basicsrexamples/models/__init__.py](basicsrexamples/models/__init__.py#11)
+1. [setup.py](setup.py#L9); &emsp; [setup.py](setup.py#L48); &emsp;[setup.py](setup.py#L91)
+1. [basicsrexamples/train.py](basicsrexamples/train.py#L4-L6)
+1. [basicsrexamples/archs/\_\_init\_\_.py](basicsrexamples/archs/__init__.py#L11)
+1. [basicsrexamples/data/\_\_init\_\_.py](basicsrexamples/data/__init__.py#L11)
+1. [basicsrexamples/models/\_\_init\_\_.py](basicsrexamples/models/__init__.py#L11)
 
 You also need to modify the corresponding information in the [setup.py](setup.py#L88-L113).
 
