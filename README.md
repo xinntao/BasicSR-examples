@@ -50,6 +50,11 @@ There are two ways to use the python package of basicsr, which are provided in t
 
 As a simple introduction and explanation, we use the example of *simple mode*, but we recommend the *installation mode* in practical use.
 
+```bash
+git clone https://github.com/xinntao/BasicSR-examples.git
+cd BasicSR-examples
+```
+
 ### Preliminary
 
 Most deep-learning projects can be divided into the following parts:
