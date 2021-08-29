@@ -7,7 +7,7 @@ from basicsr.utils import get_root_logger
 from basicsr.utils.registry import MODEL_REGISTRY
 
 
-@MODEL_REGISTRY.register()  # This line is necessary to register the model
+@MODEL_REGISTRY.register()
 class ExampleModel(SRModel):
     """Example model based on the SRModel class.
 
