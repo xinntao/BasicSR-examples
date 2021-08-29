@@ -244,63 +244,17 @@ python train.py -opt options/example_option.yml --auto_resume
 
 ## As a Template
 
+你可以使用 BasicSR-Examples 作为你项目的模板。下面主要展示一下你可能需要的修改。
+
+使用 简单模式 的基本不需要修改，使用 安装模式 的可能需要较多修改，参见[这里](https://github.com/xinntao/BasicSR-examples/blob/installation/README_CN.md#As-a-Template)
+
+1. 设置 *pre-commit* hook
+    1. 在文件夹根目录, 运行
+    > pre-commit install
+1. 修改 `LICENSE` 文件
+    本仓库使用 *MIT* 许可, 根据需要可以修改成其他许可
+
 ## :e-mail: 联系
 
 如果你有任何问题，或者想要添加你的项目到列表中，欢迎电邮
  `xintao.wang@outlook.com` or `xintaowang@tencent.com`.
-
-
-## 文件修改
-
-1. 设置 *pre-commit* hook.
-    1. 若需要, 修改 `.pre-commit-config.yaml`
-    1. 在文件夹根目录, 运行
-    > pre-commit install
-1. 修改 `.gitignore` 文件
-1. 修改 `LICENSE` 文件
-    本仓库使用 *MIT* 许可, 根据需要可以修改成其他许可
-1. 修改 *setup* 文件
-    1. `setup.cfg`
-    1. `setup.py`, 特别是其中包含的关键字 `basicsr`
-1. 修改 `requirements.txt` 文件
-1. 修改 `VERSION` 文件
-
-
-
-
-## Emoji
-
-[Emoji cheat-sheet](https://github.com/ikatyang/emoji-cheat-sheet)
-
-| Emoji | Meaning |
-| :---         |     :---:      |
-| :rocket:   | Used for [BasicSR](https://github.com/xinntao/BasicSR) Logo |
-| :sparkles: | Features |
-| :zap: | HOWTOs |
-| :wrench: | Installation / Usage |
-| :hourglass_flowing_sand: | TODO list |
-| :turtle: | Dataset preparation |
-| :computer: | Commands |
-| :european_castle: | Model zoo |
-| :memo: | Designs |
-| :scroll: | License and acknowledgement |
-| :earth_asia: | Citations |
-| :e-mail: | Contact |
-| :m: | Models |
-| :arrow_double_down: | Download |
-| :file_folder: | Datasets |
-| :chart_with_upwards_trend: | Curves|
-| :eyes: | Screenshot |
-| :books: |References |
-
-
-
-## 其他有用的技巧
-
-1. `More` 下拉菜单
-    <details>
-    <summary>More</summary>
-    <ul>
-    <li>Nov 19, 2020. Set up ProjectTemplate-Python.</li>
-    </ul>
-    </details>
