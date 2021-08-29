@@ -72,7 +72,7 @@
 python scripts/prepare_example_data.py
 ```
 
-#### 目的
+#### :zero: 目的
 
 我们来假设一个超分辨率 (Super-Resolution) 的任务，输入一张低分辨率的图片，输出高分辨率的图片。低分辨率图片包含了 1) cv2 的 bicubic X4 downsampling 和 2) JPEG 压缩 (quality=70)。
 
@@ -246,13 +246,15 @@ python train.py -opt options/example_option.yml --auto_resume
 
 你可以使用 BasicSR-Examples 作为你项目的模板。下面主要展示一下你可能需要的修改。
 
-使用 简单模式 的基本不需要修改，使用 安装模式 的可能需要较多修改，参见[这里](https://github.com/xinntao/BasicSR-examples/blob/installation/README_CN.md#As-a-Template)
+
 
 1. 设置 *pre-commit* hook
     1. 在文件夹根目录, 运行
     > pre-commit install
-1. 修改 `LICENSE` 文件
+1. 修改 `LICENSE` 文件<br>
     本仓库使用 *MIT* 许可, 根据需要可以修改成其他许可
+
+使用 简单模式 的基本不需要修改，使用 安装模式 的可能需要较多修改，参见[这里](https://github.com/xinntao/BasicSR-examples/blob/installation/README_CN.md#As-a-Template)
 
 ## :e-mail: 联系
 
