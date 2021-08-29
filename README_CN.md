@@ -157,9 +157,9 @@ network_g:
 
 Model 的例子在 [models/example_model.py](models/example_model.py)中。它主要搭建了模型的训练过程。
 在这个文件中：
-1. 我们从 basicsr 中继承了 `SRModel`。很多模型都有类似的操作，因此可以通过继承 [basicsr/models](https://github.com/xinntao/BasicSR/tree/master/basicsr/models) 中的模型来更方便地实现自己的想法，比如GAN模型，Video模型等
+1. 我们从 basicsr 中继承了 `SRModel`。很多模型都有相似的操作，因此可以通过继承 [basicsr/models](https://github.com/xinntao/BasicSR/tree/master/basicsr/models) 中的模型来更方便地实现自己的想法，比如GAN模型，Video模型等
 1. 使用了两个 Loss： L1 和 L2 (MSE) loss
-1. 其他很多内容，比如 `setup_optimizers`, `validation`, `save`，都是继承于 `SRModel`
+1. 其他很多内容，比如 `setup_optimizers`, `validation`, `save`等，都是继承于 `SRModel`
 
 **注意**：
 1. 需要在 `ExampleModel` 前添加 `@MODEL_REGISTRY.register()`，以便注册好新写的 model。这个操作主要用来防止出现同名的 model，从而带来潜在的 bug
@@ -203,6 +203,20 @@ train:
 
 基于此，我们的 [train.py](train.py)可以非常简洁。
 
+```python
+import os.path as osp
+
+import archs  # noqa: F401
+import data  # noqa: F401
+import models  # noqa: F401
+from basicsr.train import train_pipeline
+
+if __name__ == '__main__':
+    root_path = osp.abspath(osp.join(__file__, osp.pardir))
+    train_pipeline(root_path)
+
+```
+
 #### :five: debug mode
 
 至此，我们已经完成了我们这个项目的开发，下面可以通过 `debug` 模式来快捷地看看是否有问题:
@@ -211,9 +225,9 @@ train:
 python train.py -opt options/example_option.yml --debug
 ```
 
-只要带上 `--debug` 就进入 debug 模式。在 debug 模式中，程序每个iter都会输出，8个iter后就会进行validation，这样可以很方便地知道程序有没有bug啦。
+只要带上 `--debug` 就进入 debug 模式。在 debug 模式中，程序每个iter都会输出，8个iter后就会进行validation，这样可以很方便地知道程序有没有bug啦~
 
-#### :six: Normal training
+#### :six: normal training
 
 经过debug没有问题后，我们就可以正式训练了。
 
@@ -232,8 +246,8 @@ python train.py -opt options/example_option.yml --auto_resume
 
 ## :e-mail: 联系
 
-If you have any question or want to add your project in the list, please email `xintao.wang@outlook.com` or `xintaowang@tencent.com`.
-
+如果你有任何问题，或者想要添加你的项目到列表中，欢迎电邮
+ `xintao.wang@outlook.com` or `xintaowang@tencent.com`.
 
 
 ## 文件修改
