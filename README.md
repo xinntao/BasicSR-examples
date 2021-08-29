@@ -269,7 +269,7 @@ You can use BasicSR-Examples as a template for your project. Here are some modif
 1. Modify the `LICENSE`<br>
     This repository uses the *MIT* license, you may change it to other licenses
 
-The simple mode do not require many modifications. Those using the installation mode may need more modifications. See [here](https://github.com/xinntao/BasicSR-examples/blob/installation/README_CN.md#As-a-Template)
+The simple mode do not require many modifications. Those using the installation mode may need more modifications. See [here](https://github.com/xinntao/BasicSR-examples/blob/installation/README.md#As-a-Template)
 
 ## :e-mail: Contact
 
