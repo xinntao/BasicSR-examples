@@ -46,12 +46,15 @@
 - :arrow_right: [简单模式](https://github.com/xinntao/BasicSR-examples/tree/master): 项目的仓库不需要安装，就可以运行使用。但它有局限：不方便 import 复杂的层级关系；在其他位置也不容易访问本项目中的函数
 - :arrow_right: [安装模式](https://github.com/xinntao/BasicSR-examples/tree/installation): 项目的仓库需要安装 `python setup.py develop`，安装之后 import 和使用都更加方便
 
-作为简单的入门和讲解， 我们使用*简单模式*的样例，但在实际使用中我们推荐*安装模式*。
+这个`installation`分支使用 *安装模式* 进行说明。在实际使用中我们也推荐 *安装模式*。
 
 ```bash
-git clone https://github.com/xinntao/BasicSR-examples.git
+git clone -b installation https://github.com/xinntao/BasicSR-examples.git
 cd BasicSR-examples
+python setup.py develop  # need to install
 ```
+
+**注意**: 安装模式需要一个 包的名字 来安装。在这里，我们使用 `basicsrexamples` 作为包名。
 
 ### 预备
 
@@ -102,7 +105,7 @@ python scripts/prepare_example_data.py
 
 这个部分是用来确定喂给模型的数据的。
 
-这个 dataset 的例子在[data/example_dataset.py](data/example_dataset.py) 中，它完成了:
+这个 dataset 的例子在[basicsrexamples/data/example_dataset.py](basicsrexamples/data/example_dataset.py) 中，它完成了:
 1. 我们读取 Ground-Truth (GT) 的图像。读取的操作，BasicSR 提供了[FileClient](https://github.com/xinntao/BasicSR/blob/master/basicsr/utils/file_client.py), 可以方便地读取 folder, lmdb 和 meta_info txt 指定的文件。在这个例子中，我们通过读取 folder 来说明，更多的读取模式可以参考 [basicsr/data](https://github.com/xinntao/BasicSR/tree/master/basicsr/data)
 1. 合成低分辨率的图像。我们直接可以在 `__getitem__(self, index)` 的函数中实现我们想要的操作，比如降采样和添加 JPEG 压缩。很多基本操作都可以在 [[basicsr/data/degradations]](https://github.com/xinntao/BasicSR/blob/master/basicsr/data/degradations.py), [[basicsr/data/tranforms]](https://github.com/xinntao/BasicSR/blob/master/basicsr/data/transforms.py) 和 [[basicsr/data/data_util]](https://github.com/xinntao/BasicSR/blob/master/basicsr/data/data_util.py) 中找到
 1. 转换成 Torch Tensor，返回合适的信息
@@ -145,7 +148,7 @@ datasets:
 
 #### :two: arch
 
-Architecture 的例子在 [archs/example_arch.py](archs/example_arch.py)中。它主要搭建了网络结构。
+Architecture 的例子在 [basicsrexamples/archs/example_arch.py](basicsrexamples/archs/example_arch.py)中。它主要搭建了网络结构。
 
 **注意**：
 1. 需要在 `ExampleArch` 前添加 `@ARCH_REGISTRY.register()`，以便注册好新写的 arch。这个操作主要用来防止出现同名的 arch，从而带来潜在的 bug
@@ -167,7 +170,7 @@ network_g:
 
 #### :three: model
 
-Model 的例子在 [models/example_model.py](models/example_model.py)中。它主要搭建了模型的训练过程。
+Model 的例子在 [basicsrexamples/models/example_model.py](basicsrexamples/models/example_model.py)中。它主要搭建了模型的训练过程。
 在这个文件中：
 1. 我们从 basicsr 中继承了 `SRModel`。很多模型都有相似的操作，因此可以通过继承 [basicsr/models](https://github.com/xinntao/BasicSR/tree/master/basicsr/models) 中的模型来更方便地实现自己的想法，比如GAN模型，Video模型等
 1. 使用了两个 Loss： L1 和 L2 (MSE) loss
@@ -213,7 +216,7 @@ train:
 
 整个 training pipeline 可以复用 basicsr 里面的 [basicsr/train.py](https://github.com/xinntao/BasicSR/blob/master/basicsr/train.py)。
 
-基于此，我们的 [train.py](train.py)可以非常简洁。
+基于此，我们的 [basicsrexamples/train.py](basicsrexamples/train.py)可以非常简洁。
 
 ```python
 import os.path as osp
@@ -234,7 +237,7 @@ if __name__ == '__main__':
 至此，我们已经完成了我们这个项目的开发，下面可以通过 `debug` 模式来快捷地看看是否有问题:
 
 ```bash
-python train.py -opt options/example_option.yml --debug
+python basicsrexamples/train.py -opt options/example_option.yml --debug
 ```
 
 只要带上 `--debug` 就进入 debug 模式。在 debug 模式中，程序每个iter都会输出，8个iter后就会进行validation，这样可以很方便地知道程序有没有bug啦~
@@ -244,7 +247,7 @@ python train.py -opt options/example_option.yml --debug
 经过debug没有问题后，我们就可以正式训练了。
 
 ```bash
-python train.py -opt options/example_option.yml
+python basicsrexamples/train.py -opt options/example_option.yml
 ```
 
 如果训练过程意外中断需要 resume, 则使用 `--auto_resume` 可以方便地自动resume：
