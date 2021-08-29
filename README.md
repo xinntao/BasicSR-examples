@@ -1,6 +1,11 @@
-# ProjectTemplate-Python
+# BasicSR Examples
 
-[English](README.md) **|** [简体中文](README_CN.md) &emsp; [GitHub](https://github.com/xinntao/ProjectTemplate-Python) **|** [Gitee码云](https://gitee.com/xinntao/ProjectTemplate-Python)
+[English](README.md) **|** [简体中文](README_CN.md)
+
+In this repository, we give simple examples to illustrate how to use [`BasicSR`](https://github.com/xinntao/BasicSR) in your own project.
+
+
+
 
 ## File Modification
 

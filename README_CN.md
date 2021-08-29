@@ -1,6 +1,67 @@
-# ProjectTemplate-Python
+# BasicSR Examples
 
-[English](README.md) **|** [简体中文](README_CN.md) &emsp; [GitHub](https://github.com/xinntao/ProjectTemplate-Python) **|** [Gitee码云](https://gitee.com/xinntao/ProjectTemplate-Python)
+[English](README.md) **|** [简体中文](README_CN.md)
+
+[`BasicSR`](https://github.com/xinntao/BasicSR) **|** [`simple example`](https://github.com/xinntao/BasicSR-examples/tree/master) **|** [installation example`](https://github.com/xinntao/BasicSR-examples/tree/installation)
+
+使用 BasicSR 的项目:
+:white_check_mark: [Real-ESRGAN](https://github.com/xinntao/Real-ESRGAN): Practical Algorithms for General Image Restoration
+:white_check_mark: [GFPGAN](https://github.com/TencentARC/GFPGAN): Practical Algorithms for Real-world Face Restoration
+
+如果你的开源项目中使用 BasicSR, 欢迎联系我，将你的开源添加到上面的列表中
+
+---
+
+在这个仓库中，我们提供简单的例子来说明，如何在你自己的项目中使用 [`BasicSR`](https://github.com/xinntao/BasicSR)。<br>
+`BasicSR` 有两种使用方式：
+:one: Git clone 整个 BasicSR 的代码。这样可以看到 BasicSR 完整的代码，然后根据你自己的需求进行修改。
+:two: BasicSR作为一个 [python package](https://pypi.org/project/basicsr/)(即可以通过pip安装)，提供了训练的框架，流程和一些基本功能。你可以基于 BasicSR 方便地搭建你自己的项目。
+
+我们的样例主要针对第二种使用方式，即如何基于 basicsr 这个package来方便简洁地搭建你自己的项目。<br>
+
+使用 basicsr 的python package可以有两种方式，我们分别提供在两个 branch 中:<br>
+:one: [简单模式](https://github.com/xinntao/BasicSR-examples/tree/master): 项目的仓库不需要安装，就可以运行使用。但它有局限：不方便 import 复杂的层级关系；在其他位置也不容易访问本项目中的函数
+:two: [安装模式](https://github.com/xinntao/BasicSR-examples/tree/installation): 项目的仓库需要安装`python setup.py develop`，安装之后 import和使用都更加方便
+
+作为简单的入门和讲解， 我们使用简单模式的样例，但在实际使用中我们推荐安装模式。
+
+## 预备
+
+大部分的深度学习项目，都可以分为以下几个部分：
+
+1. **data**: 定义了训练数据，来喂给模型的训练过程。
+2. **arch** (architecture): 定义了网络结构 和 forward 的步骤。
+3. **model**: 定义了在训练中必要的组件（比如 loss） 和 一次完整的训练过程（包括前向传播，反向传播，梯度优化等），还有其他功能，比如 validation等。
+4. training pipeline: 定义了训练的流程，即把数据 dataloader，模型，validation，保存checkpoints 等等串联起来。
+
+当我们开发一个新的方法时，我们往往在改进: **data**, **arch**, **model**；而很多流程、基础的功能其实是共用的。那么，我们希望可以专注于主要功能的开发，而不要重复造轮子。<br>
+因此便有了 BasicSR，它把很多相似的功能都独立出来，我们只要关心 **data**, **arch**, **model**的开发即可。<br>
+为了进一步方便大家使用，我们提供了 basicsr package，大家可以通过 `pip install basicsr` 方便地安装，然后就可以使用 BasicSR 的训练流程以及已经在BasicSR里面开发好的功能啦。
+
+## 简单的例子
+
+下面我们就通过一个简单的例子，来说明如何使用 BasicSR 来搭建你自己的项目。
+
+### 目的
+
+我们来假设一个超分辨率的任务，输入一个低分辨率的图片，输出一个有锐化效果的高分辨率的图片。<br>
+在这个任务中，我们要做的是: 构建自己的data loader, architecture 和 model。下面我们分别来说明一下。
+
+### data
+
+### arch
+
+### model
+
+###
+
+debug 模式
+
+
+
+
+
+In this repository, we give simple examples to illustrate how to use [`BasicSR`](https://github.com/xinntao/BasicSR) in your own project.
 
 ## 文件修改
 
