@@ -54,9 +54,9 @@
 
 当我们开发一个新的方法时，我们往往在改进: **data**, **arch**, **model**；而很多流程、基础的功能其实是共用的。那么，我们希望可以专注于主要功能的开发，而不要重复造轮子。
 
-因此便有了 BasicSR，它把很多相似的功能都独立出来，我们只要关心 **data**, **arch**, **model**的开发即可。
+因此便有了 BasicSR，它把很多相似的功能都独立出来，我们只要关心 **data**, **arch**, **model** 的开发即可。
 
-为了进一步方便大家使用，我们提供了 basicsr package，大家可以通过 `pip install basicsr` 方便地安装，然后就可以使用 BasicSR 的训练流程以以及在 BasicSR 里面已开发好的功能啦~
+为了进一步方便大家使用，我们提供了 basicsr package，大家可以通过 `pip install basicsr` 方便地安装，然后就可以使用 BasicSR 的训练流程以及在 BasicSR 里面已开发好的功能啦~
 
 ### 简单的例子
 
@@ -72,9 +72,9 @@
 python scripts/prepare_example_data.py
 ```
 
-### 目的
+#### 目的
 
-我们来假设一个超分辨率 (Super-Resolution) 的任务，输入一个低分辨率的图片，输出高分辨率的图片。低分辨率图片包含了 1) cv2 的 bicubic X4 downsampling 和 2) JPEG 压缩 (quality=70)。
+我们来假设一个超分辨率 (Super-Resolution) 的任务，输入一张低分辨率的图片，输出高分辨率的图片。低分辨率图片包含了 1) cv2 的 bicubic X4 downsampling 和 2) JPEG 压缩 (quality=70)。
 
 为了更好的说明如何使用 arch 和 model，我们想要使用 1) 类似 SRCNN 的网络结构；2) 在训练中同时使用 L1 和 L2 (MSE) loss。
 
@@ -88,12 +88,12 @@ python scripts/prepare_example_data.py
 
 #### :one: data
 
-这个部分是用来确定喂给模型的数据的.
+这个部分是用来确定喂给模型的数据的。
 
 这个 dataset 的例子在[data/example_dataset.py](data/example_dataset.py) 中，它完成了:
-1. 我们读取 Ground-Truth (GT) 的图像。读取的操作，BasicSR 提供了[FileClient](https://github.com/xinntao/BasicSR/blob/master/basicsr/utils/file_client.py), 可以方便地读取 folder, lmdb, 和 meta_info txt 指定的文件。在这个例子中，我们通过读取 folder 来说明，更多的读取模式可以参照 [basicsr/data](https://github.com/xinntao/BasicSR/tree/master/basicsr/data)
-1. 合成低分辨率的图像。我们直接可以在 `__getitem(self, index)`的函数中实现我们想要的操作，比如降采样和添加 JPEG 压缩。很多基本操作都可以在 [basicsr/data/degradations](https://github.com/xinntao/BasicSR/blob/master/basicsr/data/degradations.py), [basicsr/data/tranforms](https://github.com/xinntao/BasicSR/blob/master/basicsr/data/transforms.py) 和 [basicsr/data/data_util](https://github.com/xinntao/BasicSR/blob/master/basicsr/data/data_util.py) 中找到。
-1. 转换成 Torch Tensor，返回合适的信息。
+1. 我们读取 Ground-Truth (GT) 的图像。读取的操作，BasicSR 提供了[FileClient](https://github.com/xinntao/BasicSR/blob/master/basicsr/utils/file_client.py), 可以方便地读取 folder, lmdb 和 meta_info txt 指定的文件。在这个例子中，我们通过读取 folder 来说明，更多的读取模式可以参考 [basicsr/data](https://github.com/xinntao/BasicSR/tree/master/basicsr/data)
+1. 合成低分辨率的图像。我们直接可以在 `__getitem__(self, index)`的函数中实现我们想要的操作，比如降采样和添加 JPEG 压缩。很多基本操作都可以在 [[basicsr/data/degradations]](https://github.com/xinntao/BasicSR/blob/master/basicsr/data/degradations.py), [[basicsr/data/tranforms]](https://github.com/xinntao/BasicSR/blob/master/basicsr/data/transforms.py) 和 [[basicsr/data/data_util]](https://github.com/xinntao/BasicSR/blob/master/basicsr/data/data_util.py) 中找到
+1. 转换成 Torch Tensor，返回合适的信息
 
 **注意**：
 1. 需要在 `ExampleDataset` 前添加 `@DATASET_REGISTRY.register()`，以便注册好新写的 dataset。这个操作主要用来防止出现同名的 dataset，从而带来潜在的 bug
@@ -155,7 +155,7 @@ network_g:
 
 #### :three: model
 
-Model 的例子在 [archs/example_model.py](archs/example_model.py)中。它主要搭建了模型的训练过程。
+Model 的例子在 [models/example_model.py](models/example_model.py)中。它主要搭建了模型的训练过程。
 在这个文件中：
 1. 我们从 basicsr 中继承了 `SRModel`。很多模型都有类似的操作，因此可以通过继承 [basicsr/models](https://github.com/xinntao/BasicSR/tree/master/basicsr/models) 中的模型来更方便地实现自己的想法，比如GAN模型，Video模型等
 1. 使用了两个 Loss： L1 和 L2 (MSE) loss
