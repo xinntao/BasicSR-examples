@@ -20,9 +20,9 @@
 ---
 
 如果你觉得这个项目对你有帮助，欢迎 :star: 这个仓库或推荐给你的朋友。Thanks:blush: <br>
-其他推荐的项目:
-- :arrow_forward: [facexlib](https://github.com/xinntao/facexlib): 提供实用的人脸相关功能的集合
-- :arrow_forward: [HandyView](https://github.com/xinntao/HandyView): 基于PyQt5的 方便的看图比图工具
+其他推荐的项目:<br>
+:arrow_forward: [facexlib](https://github.com/xinntao/facexlib): 提供实用的人脸相关功能的集合<br>
+:arrow_forward: [HandyView](https://github.com/xinntao/HandyView): 基于PyQt5的 方便的看图比图工具
 
 ---
 
