@@ -9,13 +9,13 @@
 [English](README.md) **|** [简体中文](README_CN.md) <br>
 [`BasicSR repo`](https://github.com/xinntao/BasicSR) **|** [`simple mode example`](https://github.com/xinntao/BasicSR-examples/tree/master) **|** [`installation mode example`](https://github.com/xinntao/BasicSR-examples/tree/installation)
 
-In this repository, we give the examples to illustrate **how to easily use** [`BasicSR`](https://github.com/xinntao/BasicSR) in **your own project**.
+In this repository, we give examples to illustrate **how to easily use** [`BasicSR`](https://github.com/xinntao/BasicSR) in **your own project**.
 
 :triangular_flag_on_post: **Projects that use BasicSR**
 - :white_check_mark: [**GFPGAN**](https://github.com/TencentARC/GFPGAN): A practical algorithm for real-world face restoration
 - :white_check_mark: [**Real-ESRGAN**](https://github.com/xinntao/Real-ESRGAN): A practical algorithm for general image restoration
 
-If you use `BasicSR` in your open-source projects, welcome co contact me (by [email](#e-mail-contact) or opening an issue/pull request). I will add your projects in the above list :blush:
+If you use `BasicSR` in your open-source projects, welcome to contact me (by [email](#e-mail-contact) or opening an issue/pull request). I will add your projects to the above list :blush:
 
 ---
 
@@ -34,8 +34,8 @@ Other recommended projects:<br>
 ## HowTO use BasicSR
 
 `BasicSR` can be used in two ways:
-- :arrow_right: Git clone the entire BasicSR. In this way, you can see the complete codes of BasicSR, and then modify it according to your own needs.
-- :arrow_right: Use basicsr as a [python package](https://pypi.org/project/basicsr/#history) (that is, install with pip). It provides the training framework, procedures and some basic functions. You can easily build your own projects based on basicsr.
+- :arrow_right: Git clone the entire BasicSR. In this way, you can see the complete codes of BasicSR, and then modify them according to your own needs.
+- :arrow_right: Use basicsr as a [python package](https://pypi.org/project/basicsr/#history) (that is, install with pip). It provides the training framework, procedures, and some basic functions. You can easily build your own projects based on basicsr.
     ```bash
     pip install basicsr
     ```
@@ -46,7 +46,7 @@ There are two ways to use the python package of basicsr, which are provided in t
 
 - :arrow_right: [simple mode](https://github.com/xinntao/BasicSR-examples/tree/master): the project can be run **without installation**. But it has limitations: it is inconvenient to import complex hierarchical relationships; It is not easy to access the functions in this project from other locations
 
-- :arrow_right: [installation mode](https://github.com/xinntao/BasicSR-examples/tree/installation): you need to install the projuct by running `python setup.py develop`. After installation, it is more convenient to import and use.
+- :arrow_right: [installation mode](https://github.com/xinntao/BasicSR-examples/tree/installation): you need to install the project by running `python setup.py develop`. After installation, it is more convenient to import and use.
 
 This `installation` branch uses the *installation mode* for illustration. We recommend using this mode for practical use.
 
@@ -64,8 +64,8 @@ Most deep-learning projects can be divided into the following parts:
 
 1. **data**: defines the training/validation data that is fed into the model training
 2. **arch** (architecture): defines the network structure and the forward steps
-3. **model**: defines the necessary components in training (such as loss) and a complete training process (including forward propagation, back propagation, gradient optimization, *etc*.), as well as other functions, such as validation, *etc*
-4. Training pipeline: defines the training process, that is, connect the dataloader, model, validation, saving checkpoints, *etc*
+3. **model**: defines the necessary components in training (such as loss) and a complete training process (including forward propagation, back-propagation, gradient optimization, *etc*.), as well as other functions, such as validation, *etc*
+4. Training pipeline: defines the training process, that is, connect the data-loader, model, validation, saving checkpoints, *etc*
 
 When we are developing a new method, we often improve the **data**, **arch**, and **model**. Most training processes and basic functions are actually shared. Then, we hope to focus on the development of main functions instead of building wheels repeatedly.
 
@@ -91,9 +91,9 @@ The sample data are now in the `datasets/example` folder.
 
 #### :zero: Purpose
 
-Let's use a Super-Resolution task for demo.
-It takes a low resolution image as the input and outputs a high-resolution image.
-The low-resolution images contains: 1) CV2 bicubic X4 downsampling, and 2) JPEG compression (quality = 70).
+Let's use a Super-Resolution task for the demo.
+It takes a low-resolution image as the input and outputs a high-resolution image.
+The low-resolution images contain: 1) CV2 bicubic X4 downsampling, and 2) JPEG compression (quality = 70).
 
 In order to better explain how to use the arch and model, we use 1) a network structure similar to SRCNN; 2) use L1 and L2 (MSE) loss simultaneously in training.
 
@@ -107,7 +107,7 @@ Let's explain it separately in the following parts.
 
 #### :one: data
 
-We need to implement a new dataset to fullfil our purpose. The dataset is used to feed the data into the model.
+We need to implement a new dataset to fulfill our purpose. The dataset is used to feed the data into the model.
 
 An example of this dataset is in [basicsrexamples/data/example_dataset.py](basicsrexamples/data/example_dataset.py). It has the following steps.
 
@@ -180,7 +180,7 @@ network_g:
 An example of model is in [basicsrexamples/models/example_model.py](basicsrexamples/models/example_model.py). It mainly builds the training process of a model.
 
 In this file:
-1. We inherite `SRModel` from basicsr. Many models have similar operations, so you can inherit and modify from [basicsr/models](https://github.com/xinntao/BasicSR/tree/master/basicsr/models). In this way, you can easily implement your ideas, such as GAN model, video model, *etc*.
+1. We inherit `SRModel` from basicsr. Many models have similar operations, so you can inherit and modify from [basicsr/models](https://github.com/xinntao/BasicSR/tree/master/basicsr/models). In this way, you can easily implement your ideas, such as GAN model, video model, *etc*.
 1. Two losses are used: L1 and L2 (MSE) loss
 1. Many other contents, such as `setup_optimizers`, `validation`, `save`, *etc*, are inherited from `SRModel`
 
@@ -249,7 +249,7 @@ So far, we have completed the development of our project. We can quickly check w
 python basicsrexamples/train.py -opt options/example_option.yml --debug
 ```
 
-With `--debug`, the program will enter the debug model. In the debug mode, the program will output at each iteration, and perform validation every 8 iterations, so that you can easily know whether the program has a bug~
+With `--debug`, the program will enter the debug mode. In the debug mode, the program will output at each iteration, and perform validation every 8 iterations, so that you can easily know whether the program has a bug~
 
 #### :six: normal training
 
@@ -304,4 +304,4 @@ You also need to modify the corresponding information in the [setup.py](setup.py
 
 ## :e-mail: Contact
 
-If you have any question or want to add your project in the list, please email `xintao.wang@outlook.com` or `xintaowang@tencent.com`.
+If you have any questions or want to add your project to the list, please email `xintao.wang@outlook.com` or `xintaowang@tencent.com`.
