@@ -34,8 +34,8 @@
 ## HowTO use BasicSR
 
 `BasicSR` 有两种使用方式：
-- :arrow_right: Git clone 整个 BasicSR 的代码。这样可以看到 BasicSR 完整的代码，然后根据你自己的需求进行修改。
-- :arrow_right: BasicSR 作为一个 [python package](https://pypi.org/project/basicsr/#history) (即可以通过pip安装)，提供了训练的框架，流程和一些基本功能。你可以基于 BasicSR 方便地搭建你自己的项目。
+- :arrow_right: Git clone 整个 BasicSR 的代码。这样可以看到 BasicSR 完整的代码，然后根据你自己的需求进行修改
+- :arrow_right: BasicSR 作为一个 [python package](https://pypi.org/project/basicsr/#history) (即可以通过pip安装)，提供了训练的框架，流程和一些基本功能。你可以基于 BasicSR 方便地搭建你自己的项目
     ```bash
     pip install basicsr
     ```
@@ -44,7 +44,7 @@
 
 使用 basicsr 的python package又有两种方式，我们分别提供在两个 branch 中:
 - :arrow_right: [简单模式](https://github.com/xinntao/BasicSR-examples/tree/master): 项目的仓库不需要安装，就可以运行使用。但它有局限：不方便 import 复杂的层级关系；在其他位置也不容易访问本项目中的函数
-- :arrow_right: [安装模式](https://github.com/xinntao/BasicSR-examples/tree/installation): 项目的仓库需要安装`python setup.py develop`，安装之后 import 和使用都更加方便。
+- :arrow_right: [安装模式](https://github.com/xinntao/BasicSR-examples/tree/installation): 项目的仓库需要安装 `python setup.py develop`，安装之后 import 和使用都更加方便
 
 作为简单的入门和讲解， 我们使用*简单模式*的样例，但在实际使用中我们推荐*安装模式*。
 
@@ -52,10 +52,10 @@
 
 大部分的深度学习项目，都可以分为以下几个部分：
 
-1. **data**: 定义了训练数据，来喂给模型的训练过程。
-2. **arch** (architecture): 定义了网络结构 和 forward 的步骤。
-3. **model**: 定义了在训练中必要的组件（比如 loss） 和 一次完整的训练过程（包括前向传播，反向传播，梯度优化等），还有其他功能，比如 validation等。
-4. training pipeline: 定义了训练的流程，即把数据 dataloader，模型，validation，保存 checkpoints 等等串联起来。
+1. **data**: 定义了训练数据，来喂给模型的训练过程
+2. **arch** (architecture): 定义了网络结构 和 forward 的步骤
+3. **model**: 定义了在训练中必要的组件（比如 loss） 和 一次完整的训练过程（包括前向传播，反向传播，梯度优化等），还有其他功能，比如 validation等
+4. training pipeline: 定义了训练的流程，即把数据 dataloader，模型，validation，保存 checkpoints 等等串联起来
 
 当我们开发一个新的方法时，我们往往在改进: **data**, **arch**, **model**；而很多流程、基础的功能其实是共用的。那么，我们希望可以专注于主要功能的开发，而不要重复造轮子。
 
@@ -77,6 +77,8 @@
 python scripts/prepare_example_data.py
 ```
 
+样例数据就下载在 `datasets/example` 文件夹中。
+
 #### :zero: 目的
 
 我们来假设一个超分辨率 (Super-Resolution) 的任务，输入一张低分辨率的图片，输出高分辨率的图片。低分辨率图片包含了 1) cv2 的 bicubic X4 downsampling 和 2) JPEG 压缩 (quality=70)。
@@ -97,7 +99,7 @@ python scripts/prepare_example_data.py
 
 这个 dataset 的例子在[data/example_dataset.py](data/example_dataset.py) 中，它完成了:
 1. 我们读取 Ground-Truth (GT) 的图像。读取的操作，BasicSR 提供了[FileClient](https://github.com/xinntao/BasicSR/blob/master/basicsr/utils/file_client.py), 可以方便地读取 folder, lmdb 和 meta_info txt 指定的文件。在这个例子中，我们通过读取 folder 来说明，更多的读取模式可以参考 [basicsr/data](https://github.com/xinntao/BasicSR/tree/master/basicsr/data)
-1. 合成低分辨率的图像。我们直接可以在 `__getitem__(self, index)`的函数中实现我们想要的操作，比如降采样和添加 JPEG 压缩。很多基本操作都可以在 [[basicsr/data/degradations]](https://github.com/xinntao/BasicSR/blob/master/basicsr/data/degradations.py), [[basicsr/data/tranforms]](https://github.com/xinntao/BasicSR/blob/master/basicsr/data/transforms.py) 和 [[basicsr/data/data_util]](https://github.com/xinntao/BasicSR/blob/master/basicsr/data/data_util.py) 中找到
+1. 合成低分辨率的图像。我们直接可以在 `__getitem__(self, index)` 的函数中实现我们想要的操作，比如降采样和添加 JPEG 压缩。很多基本操作都可以在 [[basicsr/data/degradations]](https://github.com/xinntao/BasicSR/blob/master/basicsr/data/degradations.py), [[basicsr/data/tranforms]](https://github.com/xinntao/BasicSR/blob/master/basicsr/data/transforms.py) 和 [[basicsr/data/data_util]](https://github.com/xinntao/BasicSR/blob/master/basicsr/data/data_util.py) 中找到
 1. 转换成 Torch Tensor，返回合适的信息
 
 **注意**：
@@ -204,7 +206,7 @@ train:
 
 #### :four: training pipeline
 
-整个 training pipeline 可以复用 basicsr里面的 [basicsr/train.py](https://github.com/xinntao/BasicSR/blob/master/basicsr/train.py)
+整个 training pipeline 可以复用 basicsr 里面的 [basicsr/train.py](https://github.com/xinntao/BasicSR/blob/master/basicsr/train.py)。
 
 基于此，我们的 [train.py](train.py)可以非常简洁。
 
@@ -250,8 +252,6 @@ python train.py -opt options/example_option.yml --auto_resume
 ## As a Template
 
 你可以使用 BasicSR-Examples 作为你项目的模板。下面主要展示一下你可能需要的修改。
-
-
 
 1. 设置 *pre-commit* hook
     1. 在文件夹根目录, 运行
