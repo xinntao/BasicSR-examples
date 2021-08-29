@@ -15,7 +15,7 @@
 - :white_check_mark: [**GFPGAN**](https://github.com/TencentARC/GFPGAN): 真实场景人脸复原的实用算法
 - :white_check_mark: [**Real-ESRGAN**](https://github.com/xinntao/Real-ESRGAN): 通用图像复原的实用算法
 
-如果你的开源项目中使用了`BasicSR`, 欢迎联系我 (通过[邮件](#e-mail-%E8%81%94%E7%B3%BB)或者开一个issue/pull request)。我会将你的开源项目添加到上面的列表中 :blush:
+如果你的开源项目中使用了`BasicSR`, 欢迎联系我 ([邮件](#e-mail-%E8%81%94%E7%B3%BB)或者开一个issue/pull request)。我会将你的开源项目添加到上面的列表中 :blush:
 
 ---
 
@@ -23,14 +23,14 @@
 
 ## 目录
 
-- [如何使用](#HowTO-use-BasicSR)
+- [如何使用 BasicSR](#HowTO-use-BasicSR)
 - [作为Template](#As-a-Template)
 
 ## HowTO use BasicSR
 
 `BasicSR` 有两种使用方式：
 - :arrow_right: Git clone 整个 BasicSR 的代码。这样可以看到 BasicSR 完整的代码，然后根据你自己的需求进行修改。
-- :arrow_right: BasicSR作为一个 [python package](https://pypi.org/project/basicsr/)(即可以通过pip安装)，提供了训练的框架，流程和一些基本功能。你可以基于 BasicSR 方便地搭建你自己的项目。
+- :arrow_right: BasicSR 作为一个 [python package](https://pypi.org/project/basicsr/#history) (即可以通过pip安装)，提供了训练的框架，流程和一些基本功能。你可以基于 BasicSR 方便地搭建你自己的项目。
     ```bash
     pip install basicsr
     ```
@@ -61,6 +61,16 @@
 ### 简单的例子
 
 下面我们就通过一个简单的例子，来说明如何使用 BasicSR 来搭建你自己的项目。
+
+我们提供了两个样例数据来做展示，
+1. [BSDS100](https://github.com/xinntao/BasicSR-examples/releases/download/0.0.0/BSDS100.zip) for training
+1. [Set5](https://github.com/xinntao/BasicSR-examples/releases/download/0.0.0/Set5.zip) for validation
+
+在 BasicSR-example 的根目录运行下面的命令来下载：
+
+```bash
+python scripts/prepare_example_data.py
+```
 
 ### 目的
 
