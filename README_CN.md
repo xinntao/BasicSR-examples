@@ -2,7 +2,7 @@
 
 [English](README.md) **|** [简体中文](README_CN.md)
 
-[`BasicSR`](https://github.com/xinntao/BasicSR) **|** [`simple example`](https://github.com/xinntao/BasicSR-examples/tree/master) **|** [installation example`](https://github.com/xinntao/BasicSR-examples/tree/installation)
+[`BasicSR`](https://github.com/xinntao/BasicSR) **|** [`simple example`](https://github.com/xinntao/BasicSR-examples/tree/master) **|** [`installation example`](https://github.com/xinntao/BasicSR-examples/tree/installation)
 
 使用 BasicSR 的项目:
 :white_check_mark: [Real-ESRGAN](https://github.com/xinntao/Real-ESRGAN): Practical Algorithms for General Image Restoration

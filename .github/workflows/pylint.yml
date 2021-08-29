@@ -1,4 +1,4 @@
-name: Python Lint
+name: PyLint
 
 on: [push, pull_request]
 
@@ -22,9 +22,8 @@ jobs:
         python -m pip install --upgrade pip
         pip install flake8 yapf isort
 
-    # modify the folders accordingly
     - name: Lint
       run: |
         flake8 .
-        isort --check-only --diff basicsr/ options/ scripts/ tests/ inference/ setup.py
-        yapf -r -d basicsr/ options/ scripts/ tests/ inference/ setup.py
+        isort --check-only --diff archs/ data/ models/ scripts/ train.py
+        yapf -r -d archs/ data/ models/ scripts/ train.py
