@@ -48,6 +48,11 @@
 
 作为简单的入门和讲解， 我们使用*简单模式*的样例，但在实际使用中我们推荐*安装模式*。
 
+```bash
+git clone https://github.com/xinntao/BasicSR-examples.git
+cd BasicSR-examples
+```
+
 ### 预备
 
 大部分的深度学习项目，都可以分为以下几个部分：
