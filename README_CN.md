@@ -35,7 +35,7 @@
 
 `BasicSR` 有两种使用方式：
 - :arrow_right: Git clone 整个 BasicSR 的代码。这样可以看到 BasicSR 完整的代码，然后根据你自己的需求进行修改
-- :arrow_right: BasicSR 作为一个 [python package](https://pypi.org/project/basicsr/#history) (即可以通过pip安装)，提供了训练的框架，流程和一些基本功能。你可以基于 BasicSR 方便地搭建你自己的项目
+- :arrow_right: BasicSR 作为一个 [python package](https://pypi.org/project/basicsr/#history) (即可以通过pip安装)，提供了训练的框架，流程和一些基本功能。你可以基于 basicsr 方便地搭建你自己的项目
     ```bash
     pip install basicsr
     ```

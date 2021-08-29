@@ -21,7 +21,7 @@ If you use `BasicSR` in your open-source projects, welcome co contact me (by [em
 
 If this repo is helpful, please help to :star: this repo or recommend it to your friends. Thanks:blush: <br>
 Other recommended projects:<br>
-:arrow_forward: [facexlib](https://github.com/xinntao/facexlib): A collection that provides useful face-relation functins.<br>
+:arrow_forward: [facexlib](https://github.com/xinntao/facexlib): A collection that provides useful face-relation functions.<br>
 :arrow_forward: [HandyView](https://github.com/xinntao/HandyView): A PyQt5-based image viewer that is handy for view and comparison.
 
 ---
@@ -34,8 +34,8 @@ Other recommended projects:<br>
 ## HowTO use BasicSR
 
 `BasicSR` can be used in two ways:
-- :arrow_right: Git clone the entire BasicSR. In this way, you can see the complete codes of basicsr, and then modify it according to your own needs.
-- :arrow_right: Use basicsr as a [python package](https://pypi.org/project/basicsr/#history) (that is, install with pip). It provides the training framework, procedures and some basic functions. You can easily build your own projects based on BasicSR.
+- :arrow_right: Git clone the entire BasicSR. In this way, you can see the complete codes of BasicSR, and then modify it according to your own needs.
+- :arrow_right: Use basicsr as a [python package](https://pypi.org/project/basicsr/#history) (that is, install with pip). It provides the training framework, procedures and some basic functions. You can easily build your own projects based on basicsr.
     ```bash
     pip install basicsr
     ```
@@ -44,13 +44,13 @@ Our example mainly focuses on the second one, that is, how to easily and concise
 
 There are two ways to use the python package of basicsr, which are provided in two branches:
 
-- :arrow_right: [simple mode](https://github.com/xinntao/BasicSR-examples/tree/master): the project can be run without installation. But it has limitations: it is inconvenient to import complex hierarchical relationships; It is not easy to access the functions in this project from other locations
+- :arrow_right: [simple mode](https://github.com/xinntao/BasicSR-examples/tree/master): the project can be run **without installation**. But it has limitations: it is inconvenient to import complex hierarchical relationships; It is not easy to access the functions in this project from other locations
 
 - :arrow_right: [installation mode](https://github.com/xinntao/BasicSR-examples/tree/installation): you need to install the projuct by running `python setup.py develop`. After installation, it is more convenient to import and use.
 
 As a simple introduction and explanation, we use the example of *simple mode*, but we recommend the *installation mode* in practical use.
 
-### Preparation
+### Preliminary
 
 Most deep-learning projects can be divided into the following parts:
 
@@ -63,7 +63,7 @@ When we are developing a new method, we often improve the **data**, **arch**, an
 
 Therefore, we have BasicSR, which separates many shared functions. With BasicSR, we just need to care about the development of **data**, **arch**, and **model**.
 
-In order to further facilitate the use of BasicSR, we provide the basicsr package. You can easily install it through `pip install basicsr`. After that, you can use the training process of BasicSR and the functions already developed in BasicSR ~
+In order to further facilitate the use of BasicSR, we provide the basicsr package. You can easily install it through `pip install basicsr`. After that, you can use the training process of BasicSR and the functions already developed in BasicSR~
 
 ### A Simple Example
 
@@ -73,7 +73,7 @@ We provide two sample data for demonstration:
 1. [BSDS100](https://github.com/xinntao/BasicSR-examples/releases/download/0.0.0/BSDS100.zip) for training
 1. [Set5](https://github.com/xinntao/BasicSR-examples/releases/download/0.0.0/Set5.zip) for validation
 
-You can easily download them by running the following command in the BasicSR-example root path:
+You can easily download them by running the following command in the BasicSR-examples root path:
 
 ```bash
 python scripts/prepare_example_data.py
@@ -89,7 +89,7 @@ The low-resolution images contains: 1) CV2 bicubic X4 downsampling, and 2) JPEG 
 
 In order to better explain how to use the arch and model, we use 1) a network structure similar to SRCNN; 2) use L1 and L2 (MSE) loss simultaneously in training.
 
-So, in this task, what we should do is:
+So, in this task, what we should do are:
 
 1. Build our own data loader
 1. Determine the architecture
@@ -99,18 +99,18 @@ Let's explain it separately in the following parts.
 
 #### :one: data
 
-We need to implement a new dataset to fullfil our purpose. The dataset is used to fed the data into the model.
+We need to implement a new dataset to fullfil our purpose. The dataset is used to feed the data into the model.
 
 An example of this dataset is in [data/example_dataset.py](data/example_dataset.py). It has the following steps.
 
 1. Read Ground-Truth (GT) images. BasicSR provides [FileClient](https://github.com/xinntao/BasicSR/blob/master/basicsr/utils/file_client.py) for easily reading files in a folder, LMDB file and meta_info txt. In this example, we use the folder mode. For more reading modes, please refer to [basicsr/data](https://github.com/xinntao/BasicSR/tree/master/basicsr/data)
-1. Synthesize low resolution images. We can directly implement the data procedures in the `__getitem__(self, index)` function such as downsampling and adding JPEG compression. Many basic operations can be found in [[basicsr/data/degradations]](https://github.com/xinntao/BasicSR/blob/master/basicsr/data/degradations.py), [[basicsr/data/tranforms]](https://github.com/xinntao/BasicSR/blob/master/basicsr/data/transforms.py) ,and [[basicsr/data/data_util]](https://github.com/xinntao/BasicSR/blob/master/basicsr/data/data_util.py)
+1. Synthesize low resolution images. We can directly implement the data procedures in the `__getitem__(self, index)` function, such as downsampling and adding JPEG compression. Many basic operations can be found in [[basicsr/data/degradations]](https://github.com/xinntao/BasicSR/blob/master/basicsr/data/degradations.py), [[basicsr/data/tranforms]](https://github.com/xinntao/BasicSR/blob/master/basicsr/data/transforms.py) ,and [[basicsr/data/data_util]](https://github.com/xinntao/BasicSR/blob/master/basicsr/data/data_util.py)
 1. Convert to torch tensor and return appropriate information
 
 **Note**:
 
 1. Please add `@DATASET_REGISTRY.register()` before `ExampleDataset`. This operation is mainly used to prevent the occurrence of a dataset with the same name, which will result in potential bugs
-1. The new dataset file should be end with `_dataset.py`, such as `example_dataset.py`. In this way, the program can **automatically** import classes without manual import
+1. The new dataset file should end with `_dataset.py`, such as `example_dataset.py`. In this way, the program can **automatically** import classes without manual import
 
 In the [option configuration file](options/example_option.yml), you can use the new dataset:
 
@@ -150,8 +150,8 @@ An example of architecture is in [archs/example_arch.py](archs/example_arch.py).
 
 **Note**:
 
-1. Add `@ARCH_REGISTRY.register()` before `ExampleArch`. Register() `, so as to register the newly implemented arch. This operation is mainly used to prevent the occurrence of arch with the same name, resulting in potential bugs
-1. The new arch file should be end with `_arch.py`, such as `example_arch.py`. In this way, the program can **automatically** import classes without manual import
+1. Add `@ARCH_REGISTRY.register()` before `ExampleArch`, so as to register the newly implemented arch. This operation is mainly used to prevent the occurrence of arch with the same name, resulting in potential bugs
+1. The new arch file should end with `_arch.py`, such as `example_arch.py`. In this way, the program can **automatically** import classes without manual import
 
 In the [option configuration file](options/example_option.yml), you can use the new arch:
 
@@ -178,8 +178,8 @@ In this file:
 
 **Note**:
 
-1. Add `@MODEL_REGISTRY.register()` before `ExampleModel`. Register() `, so as to register the newly implemented model. This operation is mainly used to prevent the occurrence of model with the same name, resulting in potential bugs
-1. The new model file should be end with `_model.py`, such as `example_model.py`. In this way, the program can **automatically** import classes without manual import
+1. Add `@MODEL_REGISTRY.register()` before `ExampleModel`, so as to register the newly implemented model. This operation is mainly used to prevent the occurrence of model with the same name, resulting in potential bugs
+1. The new model file should end with `_model.py`, such as `example_model.py`. In this way, the program can **automatically** import classes without manual import
 
 In the [option configuration file](options/example_option.yml), you can use the new model:
 
@@ -217,7 +217,7 @@ train:
 
 The whole training pipeline can reuse the [basicsr/train.py](https://github.com/xinntao/BasicSR/blob/master/basicsr/train.py) in BasicSR.
 
-Based on this， our [train.py](train.py) can be very concise:
+Based on this, our [train.py](train.py) can be very concise:
 
 ```python
 import os.path as osp
@@ -251,7 +251,7 @@ After debugging, we can have the normal training.
 python train.py -opt options/example_option.yml
 ```
 
-If the training process is interrupted unexpectedly and resume is required, please use `--auto_resume` in the command:
+If the training process is interrupted unexpectedly and the resume is required. Please use `--auto_resume` in the command:
 
 ```bash
 python train.py -opt options/example_option.yml --auto_resume
