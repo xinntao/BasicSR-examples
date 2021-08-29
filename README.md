@@ -48,7 +48,7 @@ There are two ways to use the python package of basicsr, which are provided in t
 
 - :arrow_right: [installation mode](https://github.com/xinntao/BasicSR-examples/tree/installation): you need to install the projuct by running `python setup.py develop`. After installation, it is more convenient to import and use.
 
-This `installation` branch uses the *installation mode* for illustration. We recommend to use this mode in practical use.
+This `installation` branch uses the *installation mode* for illustration. We recommend using this mode for practical use.
 
 ```bash
 git clone -b installation https://github.com/xinntao/BasicSR-examples.git
@@ -271,7 +271,7 @@ So far, you have finished developing your own projects using `BasicSR`. Isn't it
 
 You can use BasicSR-Examples as a template for your project. Here are some modifications you may need.
 
-As GitHub does not support a specific branch as template, we need extra steps to use the `installation` branch as the template.
+As GitHub does not support a specific branch as a template, we need extra steps to use the `installation` branch as the template.
 
 1. Click `Use this template` and remember to check the `[ ] Include all branches` checkbox
 2. Change the installation branch to the master branch
@@ -291,8 +291,8 @@ You may need to modify the following files:
 1. Modify the `LICENSE`<br>
     This repository uses the *MIT* license, you may change it to other licenses
 
-As the installation mode requires the package name, you also need to modify all the `basicsrexamples` name to YOUR_PACKAGE_NAME.
-Here are the detailed locations that contains the `basicsrexamples` name:
+As the installation mode requires the package name, you also need to modify all the `basicsrexamples` names to YOUR_PACKAGE_NAME.
+Here are the detailed locations that contain the `basicsrexamples` name:
 1. The `basicsrexamples` folder
 1. [setup.py](setup.py#L9); &emsp; [setup.py](setup.py#L48); &emsp;[setup.py](setup.py#L91)
 1. [basicsrexamples/train.py](basicsrexamples/train.py#L4-L6)

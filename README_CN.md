@@ -261,13 +261,37 @@ python train.py -opt options/example_option.yml --auto_resume
 
 你可以使用 BasicSR-Examples 作为你项目的模板。下面主要展示一下你可能需要的修改。
 
+由于 GitHub 不支持将特定分支作为模板，因此我们需要额外的步骤来使用`installation`分支作为模板。
+
+1. 点击 `Use this template`；记得勾选 `[ ] Include all branches`
+2. 将 安装分支 修改为 主分支
+    ```bash
+    git clone -b installation YOUR_REPO  # clone the installation branch
+    cd REPO_NAME
+    git branch -m installation master  # rename the installation branch to master
+    git push -f origin master  # force push the local master branch to remote
+    git push origin --delete installation  # delete the remote installation branch
+    ```
+
+你需要根据需要修改以下文件:
+
 1. 设置 *pre-commit* hook
     1. 在文件夹根目录, 运行
     > pre-commit install
 1. 修改 `LICENSE` 文件<br>
     本仓库使用 *MIT* 许可, 根据需要可以修改成其他许可
 
-使用 简单模式 的基本不需要修改，使用 安装模式 的可能需要较多修改，参见[这里](https://github.com/xinntao/BasicSR-examples/blob/installation/README_CN.md#As-a-Template)
+由于安装模式需要包名，因此还需要将所有`basicsrexamples`名称修改为 YOUR_PACKAGE_NAME。
+以下是包含`basicsrexamples`名称的详细位置：
+
+1. The `basicsrexamples` folder
+1. [setup.py](setup.py#L9); &emsp; [setup.py](setup.py#L48); &emsp;[setup.py](setup.py#L91)
+1. [basicsrexamples/train.py](basicsrexamples/train.py#L4-L6)
+1. [basicsrexamples/archs/\_\_init\_\_.py](basicsrexamples/archs/__init__.py#L11)
+1. [basicsrexamples/data/\_\_init\_\_.py](basicsrexamples/data/__init__.py#L11)
+1. [basicsrexamples/models/\_\_init\_\_.py](basicsrexamples/models/__init__.py#L11)
+
+你也需要修改文件 [setup.py](setup.py#L88-L113) 中的相应信息。
 
 ## :e-mail: 联系
 
