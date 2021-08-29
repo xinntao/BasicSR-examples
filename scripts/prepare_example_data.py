@@ -4,6 +4,7 @@ import requests
 
 def main(url, dataset):
     # download
+    print(f'Download {url} ...')
     response = requests.get(url)
     with open(f'datasets/example/{dataset}.zip', 'wb') as f:
         f.write(response.content)
@@ -21,7 +22,10 @@ if __name__ == '__main__':
     """
     os.makedirs('datasets/example', exist_ok=True)
 
-    urls = ['', '']
+    urls = [
+        'https://github.com/xinntao/BasicSR-examples/releases/download/0.0.0/BSDS100.zip',
+        'https://github.com/xinntao/BasicSR-examples/releases/download/0.0.0/Set5.zip'
+    ]
     datasets = ['BSDS100', 'Set5']
     for url, dataset in zip(urls, datasets):
         main(url, dataset)
