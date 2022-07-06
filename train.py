@@ -1,8 +1,10 @@
+# flake8: noqa
 import os.path as osp
 
-import archs  # noqa: F401
-import data  # noqa: F401
-import models  # noqa: F401
+import archs
+import data
+import losses
+import models
 from basicsr.train import train_pipeline
 
 if __name__ == '__main__':
