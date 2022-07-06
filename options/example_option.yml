@@ -65,9 +65,8 @@ train:
 
   # losses
   l1_opt:
-    type: L1Loss
+    type: ExampleLoss
     loss_weight: 1.0
-    reduction: mean
 
   l2_opt:
     type: MSELoss

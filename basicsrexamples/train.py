@@ -3,6 +3,7 @@ import os.path as osp
 
 import basicsrexamples.archs
 import basicsrexamples.data
+import basicsrexamples.losses
 import basicsrexamples.models
 from basicsr.train import train_pipeline
 
